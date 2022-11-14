@@ -33,7 +33,7 @@ class ServerList
     {
         if ($this->hidePermanentLogin) echo '<style>#logins {display: none}</style>';
         echo '<table cellspacing="0" class="layout">';
-        echo '<tr><th>' . lang('Server') . '<td><select name="auth[server]">' . optionlist(array_keys($this->servers), SERVER) . '</select>';
+        echo '<tr><th>' . lang('Server') . '<td><select name="auth[server]">' . optionlist(array_keys($this->servers), SERVER ?: getenv('ADMINER_DEFAULT_SERVER')) . '</select>';
         if (!$this->safeEnv) {
             echo '<tr><th>' . lang('Username') . '<td><input name="auth[username]" id="username" value="' . h($_GET['username']) . '" autocomplete="username" autocapitalize="off">' . script("focus(qs('#username')); qs('#username').form['auth[driver]'].onchange();");
 		    echo '<tr><th>' . lang('Password') . '<td><input type="password" name="auth[password]" autocomplete="current-password">';
